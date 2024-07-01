@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login" id="registrationPopup">
+
+	<div class="login_inner">
+		<div class="login_logotype">
+			<img src="./static/img/logo.png" />
+		</div>
+		<div class="login_title">
+			<h4>Создать аккаунт</h4>
+		</div>
+		<div class="login_description">
+			<p>Зарегистироваться на сайте Москва Live:</p>
+		</div>
+		<form method="POST" action="/registration">
+			<div class="login_inputs">
+				<div class="login_input">
+					<input name="email" type="text" placeholder="E-mail" />
+				</div>
+				<div class="login_input">
+					<input name="password" type="password" placeholder="Пароль" />
+				</div>
+				<div class="login_input">
+					<input name="pretype" type="text" placeholder="Повторить пароль" />
+				</div>
+			</div>
+			<div class="login_button">
+				<button type = "submit" style="cursor: pointer">Создать аккаунт</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock %}

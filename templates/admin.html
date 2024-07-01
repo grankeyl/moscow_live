@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="home">
+
+	<div class="popup">
+		<header>
+			<span class="home_1_list_item_subs">
+				<p>Сегодня в 19:20</p>
+			</span>
+			<div class="close">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M18 6L6 18M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round"
+						stroke-linejoin="round" />
+				</svg>
+			</div>
+		</header>
+		<div class="content">
+			<div class="popup_image"><img src="static/img/test.jpg" alt="logo">
+			</div>
+			<div class="popup_descr">
+				<p>👨‍⚕️Число госпитализированных москвичей с подозрением на ботулизм после салатов из «Вкусвилла» и
+					«Кухни на районе»
+					перевалило за сотню человек.👨‍⚕️Число госпитализированных москвичей с подозрением на ботулизм после
+					салатов из «Вкусвилла» и «Кухни на районе»
+					перевалило за сотню человек.👨‍⚕️Число госпитализированных москвичей с подозрением на ботулизм после
+					салатов из «Вкусвилла» и «Кухни на районе»
+					перевалило за сотню человек.👨‍⚕️Число госпитализированных москвичей с подозрением на ботулизм после
+					салатов из «Вкусвилла» и «Кухни на районе»
+					перевалило за сотню человек.👨‍⚕️Число госпитализированных москвичей с подозрением на ботулизм после
+					салатов из «Вкусвилла» и «Кухни на районе»
+					перевалило за сотню человек.👨‍⚕️Число госпитализированных москвичей с подозрением на ботулизм после
+					салатов из «Вкусвилла» и «Кухни на районе»
+					перевалило за сотню человек.👨‍⚕️Число госпитализированных москвичей с подозрением на ботулизм после
+					салатов из «Вкусвилла» и «Кухни на районе»
+					перевалило за сотню человек.👨‍⚕️Число госпитализированных москвичей с подозрением на ботулизм после
+					салатов из «Вкусвилла» и «Кухни на районе»
+					перевалило за сотню человек.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="home_1">
+
+		<div class="home_1_title">
+			<h3>Создать публикацию</h3>
+		</div>
+
+		<div class="home_1_list home_1_list_inp">
+
+			<div class="home_1_list_input_button_r">
+				<div class="home_1_list_item_button_admin_rdr">
+					<button style="width: 100%;" onclick="location.href='/admin/create'">Перейти на страницу создания новости</button>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="home_1">
+
+		<div class="home_1_title">
+			<h3>Выдача доступа</h3>
+		</div>
+
+		<div class="home_1_list home_1_list_inp">
+
+			<div class="home_1_list_input">
+				<div class="form-group">
+					<input type="text" id="new_admin_email" placeholder=" " required>
+					<label for="apple-id">Введите e-mail</label>
+				</div>
+			</div>
+
+			<div class="home_1_list_input_button_r">
+				<div class="home_1_list_item_button_admin_rdr">
+					<button onclick = "set_admin()">Выдать доступ</button>
+				</div>
+			</div>
+
+			<script>
+				async function set_admin() {
+					let email = document.getElementById('new_admin_email').value;
+					
+					const response = await fetch(`/api/giveAdmin?login=${email}`, {
+						method: "POST",
+					});
+
+					const result = await response.json();
+					
+					if (result.success) {
+						document.getElementById('new_admin_email').value = "";
+						alert("Вы успешно выдали админку!")
+					} else {
+						alert("При попытки выдачи админки, произошла ошибка...");
+					}
+				}
+			</script>
+
+		</div>
+
+	</div>
+
+
+	<div class="home_1">
+
+		<div class="home_1_title">
+			<h3>Все публикации</h3>
+		</div>
+
+		<div class="home_1_list">
+			{% for post in posts %}
+			<div class="home_1_list_item">
+				<div class="home_1_list_item_img">
+					<img src="static/img/test.jpg" alt="logo">
+				</div>
+				<div class="home_1_list_item_block">
+					<div class="home_1_list_item_title">
+						<h4>{{ post.description }}</h4>
+					</div>
+					<div class="home_1_list_item_button_admin">
+						<button onclick="location.href='/admin/edit'">Редактировать</button>
+						<button id = "{{ post.id }}" onclick = "delete_news(this.id)">Удалить</button>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			<script>
+				async function delete_news(id) {	
+					console.log(`Deleted ${id}`)	
+					const response = await fetch(`/post/delete?id=${id}`, {
+						method: "GET",
+					});
+
+					const result = await response.json();
+					
+					if (result.success) {
+						alert("Вы успешно удалили пост.")
+					} else {
+						alert("При попытки удаления поста, произошла ошибка...");
+					}
+				}
+			</script>
+
+		</div>
+
+	</div>
+
+</section>
+{% endblock %}

@@ -1,0 +1,126 @@
+.login {
+    width: 430px;
+    height: fit-content;
+    background: var(--block_bg);
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 14px;
+}
+
+.login_inner {
+    display: block;
+    max-width: 400px;
+    margin: auto;
+    padding: 0px 25px 36px 25px;
+    text-align: center;
+    position: relative;
+}
+
+.login_logotype {
+    max-width: 120px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.login_logotype img {
+    width: 70px;
+}
+
+.login_title {
+    margin-bottom: 10px;
+}
+
+.login_description {
+    margin-bottom: 20px;
+}
+
+.login_title h4 {
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.login_description p {
+    font-size: 16px;
+}
+
+.login_inputs {
+    display: block;
+}
+
+.login_input {
+    margin-bottom: 11px;
+}
+
+.login_input input {
+    width: 100%;
+    height: 40px;
+    outline: none;
+    background: var(--bg_block);
+    border: none;
+    box-shadow: none;
+    font-size: 16px;
+    border-radius: 11px;
+    padding: 0px 15px;
+}
+
+.login_input input::placeholder {
+    color: var(--h);
+    opacity: .3;
+}
+
+.login_button button {
+    width: 100%;
+    height: fit-content;
+    padding: 10px 0px;
+    background: var(--primary);
+    color: var(--button_h);
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 11px;
+    border: none;
+    margin-bottom: 23px;
+}
+
+.login_req {
+    text-align: right;
+}
+
+.login_req p {
+    color: var(--h_color);
+}
+
+.login_req a {
+    color: var(--primary_color);
+}
+
+.login_back_button {
+    cursor: pointer;
+    width: 43px;
+    height: 43px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--block_primary_bg);
+    transform: translateX(15px) translateY(15px);
+
+}
+
+.login_back_button i {
+    font-size: 16px;
+    color: var(--h_color);
+}
+
+#loginPopup {
+    visibility: visible;
+    opacity: 1;
+    overflow: auto;
+    z-index: 10001;
+}
+
+#registrationPopup {
+    visibility: visible;
+    opacity: 1;
+    overflow: auto;
+    z-index: 10001;
+}

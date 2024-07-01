@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="1"> -->
+
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="./../static/fonts/stylesheet.css">
+    <link rel="stylesheet" href="./../static/css/root.css">
+    <link rel="stylesheet" href="./../static/css/extra.css">
+
+    <link rel="stylesheet" href="./../static/css/{{ page }}.css">
+
+</head>
+<body>
+    
+    <div class="overlay" id="overlay"></div>
+
+    <div class="wrapper">
+
+        <main>
+
+            {% include "bases/top_bar.html" %}
+
+            {% block content %}
+            {% endblock %}
+
+        </main>
+
+    </div>
+
+
+	<footer class="footer {{ page }}">
+		<div class="container row">
+			<div class="footer-col">
+				<h4>Компания</h4>
+				<ul>
+					<li><a href="https://t.me/msk_live_bot">Контакты</a></li>
+					<li><a href="https://t.me/msk_live_bot">Вакансии</a></li>
+				</ul>
+			</div>
+			<div class="footer-col">
+				<h4>Информация</h4>
+				<ul>
+					<li><a href="https://t.me/msk_live_bot">Политика конфиденциальности</a></li>
+					<li><a href="https://t.me/msk_live_bot">Предупреждение о копирайте</a></li>
+				</ul>
+			</div>
+			<div class="footer-col">
+				<h4>Подпишись на нас в соц-сетях!</h4>
+				<div class="social-links">
+					<a href="https://t.me/+MudQsy2gMds3MmVi">
+                        <img src="./../static/img/telegram.svg" alt="telegram">
+                    </a>
+                    <a href="https://twitter.com/msk__live">
+                        <img src="./../static/img/x.svg" alt="x">
+                    </a>
+				</div>
+			</div>
+		</div>
+	</footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="./../static/js/dropdowns.js"></script>
+    <script src="./../static/js/hovers.js"></script>
+    
+</body>
+</html>

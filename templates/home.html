@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="home">
+
+    <div class="popup">
+        <header>
+            <span class="home_1_list_item_subs">
+                <p>Сегодня в 19:20</p>
+            </span>
+            <div class="close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </header>
+        <div>
+            <div class="popup_image"><img src="../static/img/test.jpg" alt="logo"></div>
+            <div class="popup_descr">
+                <!-- Dynamic content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="three-column_main main-news_super">
+
+        {% for post in posts %}
+        <div class="main-news_super_item home_1_list_item_block home_1_list_item">
+            <div class="view-button">
+                <picture>
+                    <source srcset="./../static/img/test.jpg" type="image/jpeg">
+                    <source media="(max-width: 640px)" srcset="./../static/img/test.jpg" type="image/jpeg">
+                    <img class="main-news_top_item_img" loading="lazy" src="./../static/img/test.jpg" alt="Фото:depositphotos.com">
+                </picture>
+            </div>
+            <span class="main-news_super_item_title">
+                <a class="view-button post-description">{{ post["description"] }}</a>
+            </span>
+            <div class="main-news_super_item_meta">
+                <span>
+                    <time>{{ post["pub_date"] }}</time>
+                </span>
+                <span>
+                    <span class="content_item_meta_viewings">
+                        <span class="tn-text-preloader-dark" data-views="" data-view="" data-id="539638" data-type="news" data-lang="ru" data-travel="">{{ post["views"] }} просмотров</span>
+                    </span>
+                    <span class="content_item_meta_comments">
+                        <span class="tn-text-preloader-dark" data-comments="" data-id="539638" data-type="news" data-lang="ru">{{ post["forwards"] }} репостов</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="overlay"></div>
+
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const viewButtons = document.querySelectorAll(".view-button");
+    const popup = document.querySelector(".popup");
+    const overlay = document.querySelector(".overlay");
+    const close = document.querySelector(".close");
+    const popupDescription = document.querySelector(".popup_descr");
+
+    viewButtons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+            const description = button.closest(".home_1_list_item_block").querySelector(".post-description").value;
+            
+            popupDescription.innerHTML = `<p>${description}</p>`;
+            
+            popup.classList.add("show");
+            overlay.classList.add("active");
+        });
+    });
+
+    close.addEventListener("click", () => {
+        popup.classList.remove("show");
+        overlay.classList.remove("active");
+    });
+
+    overlay.addEventListener("click", () => {
+        popup.classList.remove("show");
+        overlay.classList.remove("active");
+    });
+});
+</script>
+
+{% endblock %}
